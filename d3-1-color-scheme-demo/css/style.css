@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  background-color: whitesmoke;
+}
+
+
+#logo {
+  height:50px;
+}
+.navbar {
+  margin: 0 70px 20px;
+}
+
+.navbar-brand {
+  height: 60px;
+  padding: 5px 0px;
+}
+
+.row div svg {
+  margin: 48px auto;
+  display: block;
+}
+
+#chart-area3,
+#chart-area1,
+#chart-area2,
+#chart-area4 {
+  position: relative;
+}
+
+.controller {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  width: 80px;
+  height: 40px;
+  font-size: 1em;
+  user-select: none;
+  outline: none;
+}
+.controller:focus {
+  outline: none;
+}
