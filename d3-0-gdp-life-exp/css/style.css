@@ -1,0 +1,60 @@
+
+#chart-area svg {
+	margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.timeline-slider {
+	height: 5px;
+	position:absolute;
+	-webkit-appearance: none;
+	background: transparent;
+	transform: translateY(5px);
+	outline: none;
+}
+
+
+#logo {
+	height:50px;
+}
+
+.navbar {
+	margin: 0 70px 20px;
+}
+
+.navbar-brand {
+	height: 60px;
+	padding: 5px 0px;
+}
+
+.tip-table {
+	font-size: 1.2em;
+}
+
+.tip-table td:first-child {
+	font-weight: bold;
+	text-align: right;
+	padding-right: 5px;
+}
+
+.tip-table td:nth-child(2) {
+	color: deeppink;
+	text-align: left;
+	padding-left: 5px;
+}
+
+.controls {
+	display:flex;
+	justify-content: center;
+}
+.controls div {
+	margin: auto 20px 20px;
+}
+.btn {
+	min-width: 100px;
+}
+
+.continents-dropdown {
+	width: 200px;	
+}

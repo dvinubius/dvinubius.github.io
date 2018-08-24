@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>19-tiles-12</title>
+
+	<script src="../libraries/p5.js"></script>
+	<script src="../libraries/p5.dom.js"></script>
+	<script src="../libraries/p5.sound.js"></script>
+	<script src="../libraries/utilities.js" charset="utf-8"></script>
+	<script src="../libraries/tile.js" charset="utf-8"></script>
+	<script src="../libraries/grid.js" charset="utf-8"></script>
+	<script src="../libraries/tile-grid.js" charset="utf-8"></script>
+	<script src="editor-lines.js"></script>
+	<script src="sketch.js"></script>
+
+	<style>
+		:root {
+			--col-controls: rgba(0,0,0, 1);
+			--col-editor: rgba(0,0,0, 1);
+			--editor-size: 350;
+			--editor-offset-top: 50; 
+			--editor-offset-left: 50; 
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			margin:0;
+			padding:0;
+			overflow: hidden;
+
+			font-family: Helvetica, Arial, sans-serif;
+		}
+		canvas {
+			margin:auto;
+		}
+
+	.editor-wrapper {
+		--color: var(--col-controls); 
+		color: var(--color);
+
+		position: absolute;
+		top: calc( var(--editor-offset-top) * 1px );
+		left: calc( var(--editor-offset-left) * 1px );
+		width: 1px;
+		height: 1px;
+
+		background-color: transparent;
+	}
+
+	.editor-piece {
+		position:absolute;
+		color: var(--col-editor);
+		opacity: 0.2;
+		transition: opacity 0.3s ease-in-out;
+	}
+	.editor-piece:hover {
+		opacity: 0.1;
+	}
+
+	.editor-layer-basic {
+	}
+	.editor-layer-across {
+		visibility: hidden;
+	}
+	
+
+	.editor-controls {
+		position: absolute;
+
+		top: calc(var(--editor-size) * 1px + 50px);
+		left: 0;
+		width: 200px;
+		height: 100px;
+	}
+
+	legend {
+    background-color: #000;
+    color: #fff;
+    padding: 3px 6px;
+}
+
+	.output {
+			font: 1rem 'Fira Sans', sans-serif;
+	}
+
+	input {
+			margin: .4rem;
+	}
+
+	.slider {
+		margin-top: 40px;
+		user-select:none;
+		width: 185px;
+	}
+	
+	
+</style>
+</head>
+<body>
+<div class="editor-wrapper">
+	<div class="editor-controls">
+			<fieldset onclick="updateEditorLayers()">
+					<legend>Select Layer</legend>
+	
+					<div>
+							<input type="radio" id="huey" name="editor-layer" value="basic" checked />
+							<label for="huey">Basic Grid</label>
+					</div>
+	
+					<div id='across-option'>
+							<input type="radio" id="dewey" name="editor-layer" value="across"/>
+							<label for="dewey">Lines Across</label>
+					</div>
+	
+			</fieldset>
+			<input class="slider" type="range" value="2"
+						 min="2" max="5" step="0.01" list="tickmarks"
+						 oninput="editorGridSizeChanged(event); blur()">
+			<datalist id="tickmarks">
+				<option value="2">
+				<option value="3">
+				<option value="4">			
+				<option value="5">			
+			</datalist>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Color Scheme Demo with d3</title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100vh;
+      background-color: whitesmoke;
+    }
+
+    .row div svg {
+      margin: 48px auto;
+      display: block;
+    }
+
+    #chart-area3,
+    #chart-area1,
+    #chart-area2,
+    #chart-area4 {
+      position: relative;
+    }
+
+    .controller {
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      width: 80px;
+      height: 40px;
+      font-size: 1em;
+      user-select: none;
+      outline: none;
+    }
+    .controller:focus {
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Bootstrap grid setup -->
+
+  <div class="container">
+    <div class="row">
+          <div id="chart-area2">
+            <button class="controller btn btn-default">Go</button>         
+          </div>
+      </div>
+  </div>
+  <hr>
+
+  <div class="container">
+    <div class="row">
+          <div id="chart-area4">
+            <button class="controller btn btn-default">Go</button>         
+          </div>
+      </div>
+  </div>
+  <hr>
+
+  <div class="container">
+    <div class="row">
+        <div id="chart-area1">
+          <button class="controller btn btn-default">Go</button>          
+        </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="container">
+    <div class="row">
+          <div id="chart-area3">
+            <button class="controller btn btn-default">Go</button>
+          </div>
+      </div>
+  </div>
+
+  <script src="noise.js"></script>
+  <script src="d3.min.js"></script>
+  <script src="viz1.js"></script>
+  <script src="viz2.js"></script>
+  <script src="viz3.js"></script>
+  <script src="viz4.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

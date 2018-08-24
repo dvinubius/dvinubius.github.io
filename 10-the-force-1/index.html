@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>10-the-force-1</title>
+
+	<script src="../libraries/p5.js"></script>
+	<script src="../libraries/p5.dom.js"></script>
+	<script src="../libraries/p5.sound.js"></script>
+	<script src="../libraries/d3.v4.min.js"></script>
+	<script src="../libraries/bubble.js"></script>
+	<script src="sketch.js"></script>
+
+	<style>
+		:root {
+			/* --col-bg: rgb(250, 173, 110); */
+			--col-bg: hsl(37, 93%, 71%);
+			--col-controls: rgb(0, 61, 46);
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+   		position: relative;
+			background: var(--col-bg);
+
+			font-family: Helvetica, Arial, sans-serif
+		}
+
+		canvas {
+			margin:auto;
+			box-sizing: border-box;
+		}
+
+		.control-wrapper {
+			position: absolute;
+			top: 20px;
+			right: 20px;
+
+			display: flex;
+			flex-flow: column;
+			align-items: flex-end;
+			justify-content: right;
+			padding: 0;
+
+			background-color: var(--col-bg);
+			border-radius: 5px;
+		}
+
+		.btn {
+			--color: var(--col-controls); 
+			--inset: 1px;
+			padding: 8px 16px;
+			margin: 8px 16px;
+			font-size: 1em;
+			min-width: 6em;
+			background-color: transparent;
+			color: var(--color);
+			border: 1px solid var(--color);
+			border-radius: 5px;
+			transition: all .15s ease-in-out;
+			user-select: none;
+		}
+		.btn:hover {
+			cursor: pointer;
+			filter: brightness(.1);
+			box-shadow: 0 0 var(--inset) var(--inset) var(--color) inset;
+		}
+		.btn:active {
+			--inset: 1.1em;
+			outline: none;
+		}
+
+		.heat-control {
+			margin-top: 2.3em;
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: right;
+			padding-left: 2em;
+
+			/* outline: 1px solid black; */
+		}
+		.heat-label {
+			align-self: center;
+			position: relative;
+			font-size: 1em;
+			font-weight: bolder;
+			color: var(--col-controls);
+			filter: brightness(.8);
+			margin: 5px auto;
+			padding: 0;
+		}
+		#heat-counter{
+			font-size: 1.2em;
+			font-weight: normal;
+			filter: brightness(.8);
+		}
+		
+
+		.one-more {
+			margin-top: 2.3em;
+		}
+		.plus {
+			font-size: 1.1em;
+		}
+	</style>
+</head>
+<body>
+	<div class="control-wrapper">
+		<button class="btn reset" onclick="resetGrande();blur();">Reset</button>
+		<button class="btn shake-up" onclick="shakeUp();blur();">Shake</button>
+		<div class="heat-control">
+			<button class="btn agitate" onclick="agitate();blur();">&uarr;</button>
+			<label class="heat-label">HEAT : <span id="heat-counter"></span></label>
+			<button class="btn stabilize" onclick="cool();blur();">&darr;</button>
+		</div>
+		<button class="btn one-more" onclick="createBubble();blur();">Once</button>
+		<button class="btn many-more" onclick="createManyBubbles();blur();">Rain</button>
+	</div>
+</body>
+</html>

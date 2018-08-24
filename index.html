@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>p5 Bonbons</title>
+
+	<style>
+    :root {
+      --sidebar-total: 220;
+      --sidebar-small: 0; 
+      --translate-sidebar-p5: -220;
+      --z-index-p5: 0;
+      --translate-sidebar-d3: -220;
+      --z-index-d3: 0;
+      --d3-vertical-offset: 50px;
+    }
+		body {
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      margin:0;
+			padding:0;
+      height: 100vh;
+			overflow: hidden;
+      background-color: beige;
+		}
+		canvas {
+			margin:auto;
+		}
+    .sidebar {
+      position: absolute;
+      width: calc(var(--sidebar-total) * 1px);
+      height: 100%;
+      min-height: 100px;
+      background: linear-gradient(to right, #f5f5f5 0%, #f5f5f5 96%, transparent 100%);
+      box-sizing: content-box;
+      transition: transform 0.5s ease-in-out;
+      z-index: 1000;
+    }
+    .sidebar-p5 {
+      transform: translateX(calc(var(--translate-sidebar-p5) * 1px));
+      z-index: var(--z-index-p5);
+    }
+    .sidebar-d3 {
+      transform: translateX(calc(var(--translate-sidebar-d3) * 1px));
+      z-index: var(--z-index-d3);
+    }
+
+    .header {
+      position:absolute;
+      left: 0;
+      width: calc(100% + var(--d3-vertical-offset));
+      overflow-y: visible;
+      height: 46px;
+      background-color: transparent;
+    }
+    .header-p5 {
+      top: 0;
+    }
+
+    .header-d3 {
+      top: 50px;
+    }
+
+
+    .title {
+      margin-left: 10px;
+      margin-top: 15px;
+      width: 60%;
+    }
+    .title-p5 {
+      color: rgb(205,0,120);
+    }
+    .title-d3 {
+      color:  rgb(248,156,68);
+      transform: translateY(calc(-1 * var(--d3-vertical-offset)));
+    }
+
+    .star {
+      position: absolute;
+      right: 4px;
+      top: 10px;
+      padding: 1px 6px 7px;
+      background-color: transparent;
+      border: none;
+      user-select: none;
+    }
+
+    .star-p5 {
+      border-bottom: 1px solid rgb(205,0,120);
+    }
+    .star-d3 {
+      border-bottom: 1px solid rgb(248,156,68);
+    }
+
+    .star-img {
+      width: 24px;
+      transition: transform 0.8s ease-in-out;
+      transform: rotateZ(0), rotateY(0);
+    }
+
+    .rotated {
+      transform: rotateZ(240deg);
+    }
+    .star-img-d3.rotated {
+      transform: rotateY(360deg);
+    }
+
+    .star:focus {
+      outline:none;
+    }
+    .star:hover {
+      cursor: pointer;
+    }
+
+    #single-sketch {
+      height: 100vh;
+      border: none;
+      margin: 0;
+    }
+   
+
+    .list {
+      list-style: none;
+      position: absolute;
+      height: 100%;
+      overflow-y: auto;
+      top: 50px;
+      left: 10px;
+      padding: 0;
+    }
+    .list li {
+      font-size: 16px;
+      padding: 5px 10px;
+      color: #818181;
+    }
+    .list li:hover {
+	    color: rgba(205,0,120,0.8);
+      cursor: pointer;
+    }
+	</style>
+</head>
+<body>
+  <div class="sidebar sidebar-p5">
+    <div class="header header-p5">
+      <h2 class="title title-p5">Les bon-bons</h2>
+      <button class="star star-p5" onclick='toggleSidebarP5()'>
+        <img src="./assets/star.png" alt="Home" class="star-img star-img-p5">
+      </button>
+    </div>
+
+    <ul class="list">
+      <li onclick="navigateTo('0-intro')">Welcome</li>
+      <li onclick="navigateTo('1-cube-webGL')">Cube in WebGL</li>
+      <li onclick="navigateTo('2-fade-paint')">Fading Paint</li>
+      <li onclick="navigateTo('3-noise-symmetry')">Noise in Symmetry</li>
+      <li onclick="navigateTo('4-map-color')">Mapping to Color</li>
+      <li onclick="navigateTo('5-tiles-1')">Tile World <small>no. 1</small></li>
+      <li onclick="navigateTo('6-tiles-2')">Tile World <small>no. 2</small></li>        
+      <li onclick="navigateTo('7-tiles-3')">Psychedelia Tiles <small>no. 1</small></li>        
+      <li onclick="navigateTo('8-tiles-4')">Psychedelia Tiles <small>no. 2</small></li>        
+      <li onclick="navigateTo('9-times-table-circle')">Circle Times</li>        
+      <li onclick="navigateTo('10-the-force-1')">The Force <small>no. 1</small></li>        
+      <li onclick="navigateTo('11-particles-up')">Warm Snow</li>        
+      <li onclick="navigateTo('12-tiles-5')">Tiles <small>no. 5</small></li>        
+      <li onclick="navigateTo('13-tiles-6')">Tiles <small>no. 6</small></li>        
+      <li onclick="navigateTo('14-tiles-7')">Amazing Maze</li>        
+      <li onclick="navigateTo('15-tiles-8')">Tiles <small>no. 8</small></li>        
+      <li onclick="navigateTo('16-tiles-9')">Tiles <small>no. 9</small></li>        
+      <li onclick="navigateTo('17-tiles-10')">Tiles <small>no. 10</small></li>        
+      <li onclick="navigateTo('18-tiles-11')">Tiles <small>no. 11</small></li>        
+      <li onclick="navigateTo('19-tiles-12')">Tiles <small>no. 12</small></li>        
+      <li onclick="navigateTo('20-tile-interact-1')">Tiles Editor</li>        
+      <li onclick="navigateTo('21-rotations')">Spinning <small>no. 1</small></li>        
+      <li onclick="navigateTo('22-rotations')">Spinning <small>no. 2</small></li>        
+      <li onclick="navigateTo('23-rotations')">Spinning Gold</li>        
+      <li onclick="navigateTo('24-rotations')">Tender Blu</li>        
+      <li onclick="navigateTo('25-roses')">Flower</li>        
+      <li onclick="navigateTo('26-acrossing')">Acrossing</li>        
+      <li onclick="navigateTo('27-acrossing-2')">Acrossing Dark</li>        
+    </ul>
+  </div>
+  <div class="sidebar sidebar-d3">
+    <div class="header header-d3">
+      <h2 class="title title-d3">Viz Works</h2>
+      <button class="star star-d3" onclick='toggleSidebarD3()'>
+        <img src="./assets/d3.png" alt="Home" class="star-img star-img-d3">
+      </button>
+    </div>
+
+    <ul class="list">
+      <li onclick="navigateTo('d3-0-gdp-life-exp')">GDP-LifeExp-MindTheGap</li>
+      <li onclick="navigateTo('d3-1-color-scheme-demo')">Color Schemes</li>
+    </ul>
+  </div>
+  <iframe src="./0-intro/index.html" frameborder="0" width=100% scrolling="auto" id="single-sketch"></iframe>
+	<script src="./libraries/p5.js"></script>
+	<script src="./libraries/p5.dom.js"></script>
+	<script src="./libraries/p5.sound.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>9-times-table-circle</title>
+
+	<script src="../libraries/p5.js"></script>
+	<script src="../libraries/p5.dom.js"></script>
+	<script src="../libraries/p5.sound.js"></script>
+	<script src="sketch.js"></script>
+
+	<style>
+		:root {
+			--col-text: rgba(220,220,220,1);
+			--col-legend: deeppink;
+			--col-legend: rgba(105, 255, 175,0.85);
+			--font-size-times: 24px;
+			--font-size-legend: 16px;
+			--top-pos-main-display: 80px;
+			--top-pos-legend: calc(var(--top-pos-main-display) + 230px);
+			--display-width: 230px;
+		}
+		.normal-text {
+			color: var(--col-text) !important;
+		}
+		body {
+			margin:0;
+			padding:0;
+			overflow: hidden;
+		}
+		.display {
+			--padding-left: calc(40px + 2vw);
+			font-size: 20px;
+			text-align: right;
+			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+			color: var(--col-text);
+			width: var(--display-width);
+		}
+		.display table {
+			margin: auto;
+			table-layout: fixed;
+		}
+		.display table td {
+			width: 50%;
+		}
+		.legend {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.main-display {
+			position: absolute;
+			left: var(--padding-left);
+			top: var(--top-pos-main-display);
+			
+			/* transform: translateY(calc(-50% - var(--font-size-times) / 8)); */
+			font-weight: bold;
+		}
+
+
+		.display tr td:first-child {
+			text-align: right;
+			padding-right: 10px;
+		}
+		.display tr td:nth-child(2) {
+			text-align: left;
+			padding-left: 10px;
+		}
+		.main-display .times-display-row {
+			font-size: var(--font-size-times);
+		}
+		.main-display hr {
+			width: 80%;
+		}
+
+
+
+		.both-legends {
+			--padding-left: calc(40px + 2vw);
+			height: 50px;
+			width: var(--display-width);
+			position: absolute;
+			left: var(--padding-left);
+			top: var(--top-pos-legend);
+		}
+		.checkbox {
+			margin-top: 10px;
+			font-size: var(--font-size-legend);
+			text-align: center;
+		}
+		.checkbox label {
+			transform: translateY(calc(-1 * var(--font-size-legend) * 0.5));
+		}
+		.legend hr {
+			width: 80%;
+		}
+
+		.table {
+			text-align: left;
+			padding: 0;
+			/* border: 1px solid white; */
+		}
+		.space-table td:first-child,
+		.legend td:first-child {
+			font-size: var(--font-size-legend);
+			text-align: right;
+			padding: 10px 10px 10px 0;
+		}
+		.space-table td:nth-child(2),
+		.legend td:nth-child(2) {
+			color: var(--col-legend);
+			font-family: monospace;
+			text-align: left;
+			letter-spacing: 2px;
+			padding: 10px 0 10px 10px;
+		}
+
+		.menu-toggler {
+			position:absolute;
+			height: 1px;
+			left: 0;
+			right: 0;
+		}
+		.menu-toggler:hover {
+			cursor: pointer;
+		}
+		.hamburger, 
+		.closer {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			user-select: none;
+			color: var(--col-legend);
+		}
+		.closer {
+			transform: translateX(-50%) scale(1.6);
+		}
+
+		.hidden {
+			opacity: 0 !important;
+		}
+		.hideable {
+			opacity: 1;
+			transition: opacity 0.3s ease-in-out;
+		}		
+
+		hr {
+			border-top: 1px solid grey;
+			border-bottom: none;
+		}
+
+		canvas {
+			margin:auto;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="display main-display">
+			<table class="space-table">
+				<tr>
+					<td>&#10074; &#10074; &nbsp;/&nbsp; &#9658;</td>
+					<td><strong>
+						<!-- <small class="normal-text">Press </small> -->
+						Press Space
+					</strong></td>
+				</tr>
+			</table>
+			<hr>	
+			<table>
+				<tr>
+					<td>Density</td>
+					<td><span id='densityDisplay'></span></td>
+				</tr>
+				<tr class="times-display-row">
+					<td>Factor</td>
+					<td><span id='timesDisplay'></span></td>
+				</tr>
+				<tr>
+					<td>Speed</td>
+					<td><span id='speedDisplay'></span></td>
+				</tr>
+			</table>
+			<hr>
+			<div class="menu-toggler" onclick="toggleLegend()">
+				<span class="hamburger hideable">&#9776;</span>
+				<span class="closer hideable hidden">&times;</span>
+			</div>
+		</div>
+
+	<div class="both-legends legend hideable hidden">
+		<div class="display legend hidden-on-halt hideable">
+			<table class="table">
+				<tr>
+					<td>Direction</td>
+					<td>&uarr; | &darr;</td>
+				</tr>
+				<tr>
+					<td>Speed</td>
+					<td>&larr; | &rarr;</td>
+				</tr>
+			</table>
+		</div>
+	
+		<div class="display legend hidden-on-run hideable">
+			<table class="table">
+				<tr>
+					<td>Set density</td>
+					<td>W | S</td>
+				</tr>
+				<tr>
+					<td>Set times</td>
+					<td>A | D</td>
+				</tr>
+			</table>
+			<hr>		
+			<div class="checkbox">
+				<input type="checkbox" name="numbers" id="show-numbers-cb" onchange="toggleCheckbox(event)">
+				<label for="numbers">Show numbers (small density)</label>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>15-tiles-8</title>
+
+	<script src="../libraries/p5.js"></script>
+	<script src="../libraries/p5.dom.js"></script>
+	<script src="../libraries/p5.sound.js"></script>
+	<script src="../libraries/utilities.js" charset="utf-8"></script>
+	<script src="../libraries/tile.js" charset="utf-8"></script>
+	<script src="../libraries/grid.js" charset="utf-8"></script>
+	<script src="../libraries/tile-grid.js" charset="utf-8"></script>
+	<script src="sketch.js"></script>
+
+	<style>
+		:root {
+			--col-controls: rgb(170, 230, 120);
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			margin:0;
+			padding:0;
+			overflow: hidden;
+
+			font-family: Helvetica, Arial, sans-serif;
+		}
+		canvas {
+			margin:auto;
+		}
+
+	.control-wrapper {
+		--color: var(--col-controls); 
+		color: var(--color);
+
+		position: absolute;
+		top: 20px;
+		right: 20px;
+
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+		justify-content: right;
+		padding: 0;
+
+		background-color: var(--col-bg);
+		border-radius: 5px;
+	}
+	.btn {
+		--inset: 1px;
+		padding: 8px 16px;
+		margin: 8px 16px;
+		font-size: 1em;
+		min-width: 6em;
+		background-color: transparent;
+ 		color: var(--color);
+		border: 1px solid var(--color);
+		border-radius: 5px;
+		transition: all .15s ease-in-out;
+		user-select: none;
+	}
+	.btn:hover {
+		cursor: pointer;
+		filter: brightness(.1);
+		box-shadow: 0 0 var(--inset) var(--inset) var(--color) inset;
+	}
+	.btn:active {
+		--inset: 1.1em;
+		outline: none;
+	}
+
+	.legend {
+		margin: 5px auto;
+	}
+</style>
+</head>
+<body>
+<div class="control-wrapper">
+	<button class="btn" onclick="reset();blur();">Recreate</button>
+	<label class="label legend">.</label>
+	<label class="label legend">.</label>
+	<label class="label legend">.</label>
+	<label class="label legend">&darr;</label>
+	<label class="label legend">Or scroll</label>
+	<label class="label legend">&uarr;</label>
+	<label class="label legend">.</label>
+	<label class="label legend">.</label>
+	<label class="label legend">.</label>
+</div>
+</body>
+</html>
