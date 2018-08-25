@@ -150,6 +150,9 @@ function navigateTo(id) {
 		case 'd3-1-color-scheme-demo':
 			frame.src = "./d3-1-color-scheme-demo/index.html";
 			break;
+		case 'd3-2-crypto-chart':
+			frame.src = "./d3-2-crypto-chart/index.html";
+			break;
 	}
 
 	if (!isSidebarSmallP5) {
