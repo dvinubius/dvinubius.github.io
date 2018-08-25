@@ -74,7 +74,7 @@ function viz1() {
   const noiseDiff = 0.08;
 
 
-  d3.csv('colors.csv').then(colorData => {
+  d3.csv('colors2.csv').then(colorData => {
 
     currentData = colorData;
 
