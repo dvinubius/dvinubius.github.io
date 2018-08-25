@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  background-color: white;
+}
+
+#chart-area svg {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  background-color: whitesmoke;
+}
+
+#logo {
+  height:50px;
+}
+.navbar {
+	margin: 0 70px 20px;
+}
+.navbar-brand {
+  height: 60px;
+  padding: 5px 0px;
+}
+
+#slider-div {
+  transform: translate(5px,-4px);
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #D4D8DA;
+  stroke-width: 2px;
+  shape-rendering: crispEdges;
+}
+
+.line {
+  fill: none;
+  stroke-width: 2px;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.focus circle {
+  fill: transparent;
+  stroke: deepskyblue;
+  stroke-width: 3px;
+}
+  
+.hover-line {
+  stroke: deeppink;
+  opacity: 0.2;
+  stroke-width: 2px;
+  stroke-dasharray: 3,3;
+}
+
+#selections .col-md-4 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
