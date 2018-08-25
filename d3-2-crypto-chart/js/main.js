@@ -56,7 +56,8 @@ let allData;
 
 // Line path generator
 const line = d3.line()
-    .x(d => x(d.date));
+    .x(d => x(d.date))
+    .curve(d3.curveCardinal);
 
 // Add line to chart
 const linePath = g.append("path")
@@ -204,10 +205,10 @@ function initOverlay() {
         .attr("class", "focus")
         .style("display", "none");
 
-    // focus.append("line")
-    //     .attr("class", "x-hover-line hover-line")
-    //     .attr("y1", 0)
-    //     .attr("y2", height);
+    focus.append("line")
+        .attr("class", "x-hover-line hover-line")
+        .attr("y1", 0)
+        .attr("y2", height);
 
     // focus.append("line")
     //     .attr("class", "y-hover-line hover-line")
