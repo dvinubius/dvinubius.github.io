@@ -29,7 +29,8 @@ body {
 #chart-area3,
 #chart-area1,
 #chart-area2,
-#chart-area4 {
+#chart-area4,
+#chart-area5 {
   position: relative;
 }
 
@@ -75,4 +76,8 @@ body {
 }
 .controller:focus {
   outline: none;
+}
+
+.frame {
+  outline: 2px solid whitesmoke;
 }
