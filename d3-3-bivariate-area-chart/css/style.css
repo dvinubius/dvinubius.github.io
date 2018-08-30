@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: 10px sans-serif;
+  height: 100vh;
+}
+
+#logo {
+  height:50px;
+}
+.navbar {
+  margin: 0 70px 20px;
+}
+
+.navbar-brand {
+  height: 60px;
+  padding: 5px 0px;
+}
+
+.row div svg {
+  margin: 48px auto;
+  display: block;
+}
+
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+
+.area {
+  fill: rgb(10, 160, 110);
+}
