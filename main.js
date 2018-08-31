@@ -156,6 +156,9 @@ function navigateTo(id) {
 		case 'd3-3-bivariate-area-chart':
 			frame.src = "./d3-3-bivariate-area-chart/index.html";
 			break;
+		case 'd3-4-difference-chart':
+			frame.src = "./d3-4-difference-chart/index.html";
+			break;
 	}
 
 	if (!isSidebarSmallP5) {

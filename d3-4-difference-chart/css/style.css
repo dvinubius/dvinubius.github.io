@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: 12px sans-serif;
+  height: 100vh;
+}
+
+#logo {
+  height:50px;
+}
+.navbar {
+  margin: 0 70px 20px;
+}
+
+.navbar-heading {
+  text-align: center;
+}
+
+.navbar-brand {
+  height: 60px;
+  padding: 5px 0px;
+}
+
+.row {
+  background-color: hsla(201, 10%, 95%);
+
+}
+.row div svg {
+  margin: 48px auto;
+  display: block;
+}
+
+.axis {
+  font-size: 12px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.area.above {
+  fill: #fc8d59;
+}
+
+.area.below {
+  /* fill: #91cf60; */
+  fill: #A8C256;
+}
+
+.line {
+  fill: none;
+  stroke: #720E07;
+  stroke-width: 1.5px;
+}
