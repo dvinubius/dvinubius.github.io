@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>p5 Bonbons</title>
+	<title>Dvinubius Gallery</title>
 
 	<style>
     :root {
@@ -128,7 +128,7 @@
       overflow-y: auto;
       top: 50px;
       left: 10px;
-      padding: 5px 0 20px;
+      padding: 15px 0 20px;
     }
     .list li {
       font-size: 16px;
@@ -138,6 +138,19 @@
     .list li:hover {
 	    color: rgba(205,0,120,0.8);
       cursor: pointer;
+    }
+    .list li:last-child {
+      margin-bottom: 20px;
+    }
+
+    .bottom-fader {
+      width: 170px;
+      height: 40px;
+      background: linear-gradient(to top, hsl(0, 0%, 96%) 0%, hsl(0, 0%, 96%) 49%, transparent 100%);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 2000;
     }
 	</style>
 </head>
@@ -180,6 +193,8 @@
       <li onclick="navigateTo('26-acrossing')">Acrossing</li>        
       <li onclick="navigateTo('27-acrossing-2')">Acrossing Dark</li>        
     </ul>
+
+    <div class="bottom-fader"></div>
   </div>
   <div class="sidebar sidebar-d3">
     <div class="header header-d3">
@@ -197,6 +212,8 @@
       <li onclick="navigateTo('d3-4-difference-chart')">Difference Chart</li>
       <li onclick="navigateTo('d3-5-donuts-layered')">Layered Donuts</li>
     </ul>
+
+    <div class="bottom-fader"></div>
   </div>
   <iframe src="./0-intro/index.html" frameborder="0" width=100% scrolling="auto" id="single-sketch"></iframe>
 	<script src="./libraries/p5.js"></script>
