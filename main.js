@@ -159,6 +159,9 @@ function navigateTo(id) {
 		case 'd3-4-difference-chart':
 			frame.src = "./d3-4-difference-chart/index.html";
 			break;
+		case 'd3-5-donuts-layered':
+			frame.src = "./d3-5-donuts-layered/index.html";
+			break;
 	}
 
 	if (!isSidebarSmallP5) {

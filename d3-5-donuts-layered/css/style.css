@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: 14px sans-serif;
+  height: 100vh;
+}
+
+#logo {
+  height:50px;
+}
+.navbar {
+  margin: 0 70px 20px;
+}
+
+.navbar-heading {
+  text-align: center;
+}
+
+.navbar-brand {
+  height: 60px;
+  padding: 5px 0px;
+}
+
+.row div svg {
+  margin: auto;
+  display: block;
+}
+
+#chart-area {
+  position: relative;
+  margin-top: 24px;
+  padding: 24px 0;
+  background-color: whitesmoke;
+}
+
+form {
+  position: absolute;
+  left: 12vw;
+  top: 50px;
+}
+
+.radio-option {
+  margin: 0 7px;
+  display:block;
+}
+
+.radio-option input {
+  margin-right: 7px;
+  margin-bottom: 7px; 
+}
+
+.dashed-line {
+  stroke-width: 4px;
+  stroke-dasharray: 4,2;
+}
